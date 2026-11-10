@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luthfi Barbershop & Fashion Store</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for better visual aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Top Info Bar -->
+    <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5"><i class="fab font-bold fa-whatsapp text-emerald-400 text-sm"></i> 0895379546363</span>
+                <span class="flex items-center gap-1.5"><i class="fab fa-instagram text-pink-400 text-sm"></i> Luthfi ahmadmaulana</span>
+            </div>
+            <div class="flex items-center space-x-3 text-slate-300">
+                <span class="bg-emerald-600/30 text-emerald-300 text-[10px] font-semibold px-2 py-0.5 rounded border border-emerald-500/30">Pengiriman Cepat</span>
+                <span class="bg-amber-600/30 text-amber-300 text-[10px] font-semibold px-2 py-0.5 rounded border border-amber-500/30">Bisa COD & Angsuran</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="bg-white sticky top-0 z-40 shadow-sm border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand Logo & Name -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-amber-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-amber-500/20">
+                        <i class="fas font-extrabold fa-scissors text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-black tracking-tight text-slate-900 uppercase">Luthfi Barbershop</h1>
+                        <p class="text-xs text-amber-600 font-medium tracking-wide">& Fashion Premium Apparel</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#etalase-promo" class="text-slate-600 hover:text-amber-600 font-medium text-sm transition">Promo Spesial</a>
+                    <a href="#katalog-produk" class="text-slate-600 hover:text-amber-600 font-medium text-sm transition">Katalog Produk</a>
+                    <a href="#metode-pembayaran" class="text-slate-600 hover:text-amber-600 font-medium text-sm transition">Pembayaran</a>
+                </nav>
+
+                <!-- Admin Action Button -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="toggleModal('adminModal', true)" class="bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium px-4 py-2.5 rounded-lg transition flex items-center gap-2 shadow-sm">
+                        <i class="fas fa-plus-circle text-amber-400"></i>
+                        <span>Input Stok Baru</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- SECTION 1: PROMO SHOWCASE (ETALASE PALING DEPAN - ATAS) -->
+        <section id="etalase-promo" class="bg-gradient-to-br from-amber-500 via-amber-600 to-slate-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl overflow-hidden relative">
+            <div class="absolute right-0 top-0 -mt-10 -mr-10 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 border-b border-white/20 pb-4 gap-4">
+                <div>
+                    <span class="inline-block bg-amber-300 text-amber-950 font-bold text-xs uppercase px-3 py-1 rounded-full mb-2 tracking-wider shadow-sm">
+                        <i class="fas fa-fire mr-1"></i> Promo Terbatas
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Etalase Promo Hot Item!</h2>
+                    <p class="text-amber-100 text-sm mt-1">Dapatkan diskon terbaik untuk koleksi terlaris bulan ini.</p>
+                </div>
+                <div class="text-xs bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/20">
+                    <i class="fas fa-shipping-fast text-amber-300 mr-1.5"></i> Gratis Ongkir S&K Berlaku
+                </div>
+            </div>
+
+            <!-- Promo Grid -->
+            <div id="promoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Promo cards inserted dynamically -->
+            </div>
+        </section>
+
+        <!-- SECTION 2: FILTER & KATALOG PRODUK -->
+        <section id="katalog-produk" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Katalog Pakaian Usaha</h2>
+                    <p class="text-sm text-slate-500">Pilihan fashion Anak, Dewasa, Pria & Wanita berkualitas tinggi.</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2" id="categoryFilterContainer">
+                    <button onclick="filterCategory('semua')" class="filter-btn active-filter bg-amber-600 text-white px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition" data-cat="semua">Semua</button>
+                    <button onclick="filterCategory('pria')" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition" data-cat="pria">Pria</button>
+                    <button onclick="filterCategory('wanita')" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition" data-cat="wanita">Wanita</button>
+                    <button onclick="filterCategory('dewasa')" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition" data-cat="dewasa">Dewasa (Unisex)</button>
+                    <button onclick="filterCategory('anak')" class="filter-btn bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 px-4 py-2 rounded-xl text-xs font-semibold shadow-sm transition" data-cat="anak">Anak-Anak</button>
+                </div>
+            </div>
+
+            <!-- Search & Sort Controls -->
+            <div class="flex flex-col sm:flex-row gap-4 items-center justify-between bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="relative w-full sm:w-80">
+                    <i class="fas fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                    <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Cari nama pakaian, merek, atau bahan..." class="w-full pl-10 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-500">
+                </div>
+                <div class="text-xs text-slate-500 w-full sm:w-auto text-right">
+                    Menampilkan <span id="productCount" class="font-bold text-slate-800">0</span> Produk
+                </div>
+            </div>
+
+            <!-- Main Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Dynamic products rendered here -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: INFORMASI METODE PEMBAYARAN -->
+        <section id="metode-pembayaran" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <h3 class="text-xl font-bold text-slate-900">Metode Pembayaran Lengkap</h3>
+                <p class="text-xs text-slate-500">Belanja mudah dan fleksibel dengan berbagai opsi pembayaran aman.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Payment Badges -->
+                <div class="border border-slate-200 rounded-2xl p-4 text-center hover:border-amber-500 transition group">
+                    <div class="w-10 h-10 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:scale-110 transition">
+                        <i class="fas fa-hand-holding-dollar"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">COD (Bayar Ditempat)</p>
+                    <p class="text-[10px] text-slate-400 mt-0.5">Bayar saat barang tiba</p>
+                </div>
+                
+                <div class="border border-slate-200 rounded-2xl p-4 text-center hover:border-amber-500 transition group">
+                    <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:scale-110 transition">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">Cash / Tunai</p>
+                    <p class="text-[10px] text-slate-400 mt-0.5">Ambil langsung di toko</p>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl p-4 text-center hover:border-amber-500 transition group">
+                    <div class="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:scale-110 transition">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">Angsuran / Cicilan</p>
+                    <p class="text-[10px] text-slate-400 mt-0.5">Syarat & ketentuan berlaku</p>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl p-4 text-center hover:border-amber-500 transition group">
+                    <div class="w-10 h-10 bg-red-50 text-red-600 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:scale-110 transition">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">QRIS All Payment</p>
+                    <p class="text-[10px] text-slate-400 mt-0.5">Scan cepat serbaguna</p>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl p-4 text-center hover:border-amber-500 transition group">
+                    <div class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:scale-110 transition">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">Bank Transfer</p>
+                    <p class="text-[10px] text-slate-400 mt-0.5">Bank BRI & BCA</p>
+                </div>
+
+                <div class="border border-slate-200 rounded-2xl p-4 text-center hover:border-amber-500 transition group">
+                    <div class="w-10 h-10 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-2 text-lg group-hover:scale-110 transition">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <p class="text-xs font-bold text-slate-800">E-Wallet</p>
+                    <p class="text-[10px] text-slate-400 mt-0.5">DANA, OVO, GoPay, ShopeePay</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-10 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center text-white">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+                        <span class="text-base font-bold text-white uppercase tracking-wider">Luthfi Barbershop</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed">Pusat penjualan pakaian pria, wanita, dewasa, dan anak berkualitas terbaik dengan harga terjangkau. Melayani order online dan offline.</p>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm uppercase">Kontak Official</h4>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="https://wa.me/62895379546363" target="_blank" class="hover:text-amber-400 flex items-center gap-2">
+                                <i class="fab fa-whatsapp text-emerald-400 text-sm"></i> WhatsApp: 0895379546363
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/Luthfi_ahmadmaulana" target="_blank" class="hover:text-amber-400 flex items-center gap-2">
+                                <i class="fab fa-instagram text-pink-400 text-sm"></i> IG: @Luthfi ahmadmaulana
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-store text-amber-400 text-sm"></i> Toko Fisik: Luthfi Barbershop Center
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm uppercase">Jaminan Layanan</h4>
+                    <p class="text-slate-400">Setiap order melalui sistem otomatis web ini akan langsung terhubung ke WhatsApp resmi admin untuk pemrosesan yang cepat dan efisien.</p>
+                </div>
+            </div>
+            <div class="pt-6 border-t border-slate-800 text-center text-slate-500">
+                &copy; <span id="year"></span> Luthfi Barbershop Apparel Store. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: ORDER / PEMESANAN PRODUK -->
+    <div id="orderModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-100 flex flex-col max-h-[90vh]">
+            <!-- Modal Header -->
+            <div class="bg-slate-900 text-white p-5 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-shopping-bag text-amber-400"></i>
+                    <h3 class="font-bold text-base">Formulir Order Web</h3>
+                </div>
+                <button onclick="toggleModal('orderModal', false)" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Modal Content Form -->
+            <form id="orderForm" onsubmit="submitOrder(event)" class="p-5 overflow-y-auto space-y-4 flex-grow text-xs">
+                <!-- Selected Product Summary -->
+                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-3 flex gap-3">
+                    <img id="modalProductImg" src="" alt="Produk" class="w-16 h-16 object-cover rounded-xl border border-amber-200">
+                    <div>
+                        <span id="modalProductBadge" class="bg-amber-600 text-white text-[9px] px-1.5 py-0.5 rounded font-bold uppercase">PROMO</span>
+                        <h4 id="modalProductName" class="font-bold text-slate-900 text-sm">Nama Produk</h4>
+                        <p class="text-amber-700 font-extrabold text-sm mt-0.5" id="modalProductPrice">Rp 0</p>
+                        <p class="text-[10px] text-slate-500" id="modalProductBrand">Merek: -</p>
+                    </div>
+                </div>
+
+                <!-- Input Fields -->
+                <div class="space-y-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Nama Lengkap Pembeli *</label>
+                        <input type="text" id="custName" required placeholder="Contoh: Budi Santoso" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Nomor WhatsApp Aktif *</label>
+                        <input type="tel" id="custPhone" required placeholder="Contoh: 08123456789" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Pilih Ukuran *</label>
+                            <select id="custSize" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                                <option value="">-- Pilih --</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">Jumlah (Pcs) *</label>
+                            <input type="number" id="custQty" min="1" value="1" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Pilih Metode Pembayaran *</label>
+                        <select id="custPayment" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none font-medium text-slate-800">
+                            <option value="">-- Pilih Pembayaran --</option>
+                            <option value="COD (Bayar Ditempat)">COD (Cash On Delivery)</option>
+                            <option value="Cash / Tunai">Cash / Tunai (Di Toko)</option>
+                            <option value="Angsuran / Cicilan Toko">Angsuran / Cicilan</option>
+                            <option value="QRIS (All Payment)">QRIS (Scan All Merchant)</option>
+                            <option value="Transfer Bank BRI">Transfer Bank BRI</option>
+                            <option value="Transfer Bank BCA">Transfer Bank BCA</option>
+                            <option value="E-Wallet DANA">E-Wallet DANA</option>
+                            <option value="E-Wallet OVO">E-Wallet OVO</option>
+                            <option value="E-Wallet GoPay">E-Wallet GoPay</option>
+                            <option value="E-Wallet ShopeePay">E-Wallet ShopeePay</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Alamat Lengkap Pengiriman *</label>
+                        <textarea id="custAddress" rows="2" required placeholder="Jalan, RT/RW, Kecamatan, Kota..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
+                    </div>
+                </div>
+
+                <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] text-slate-400 block">Total Pembayaran:</span>
+                        <span id="modalTotalPrice" class="text-base font-extrabold text-amber-600">Rp 0</span>
+                    </div>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-md transition">
+                        <i class="fab fa-whatsapp text-base"></i> Kirim via WA
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: INPUT STOK BARU (ADMIN FORM) -->
+    <div id="adminModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-100 flex flex-col max-h-[90vh]">
+            <!-- Header Modal -->
+            <div class="bg-slate-900 text-white p-5 flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-boxes text-amber-400"></i>
+                    <h3 class="font-bold text-base">Menu Input Stok Baru</h3>
+                </div>
+                <button onclick="toggleModal('adminModal', false)" class="text-slate-400 hover:text-white text-lg">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Form Content -->
+            <form id="addStockForm" onsubmit="addNewProduct(event)" class="p-5 overflow-y-auto space-y-4 flex-grow text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Nama Produk / Pakaian *</label>
+                    <input type="text" id="newTitle" required placeholder="Contoh: Kemeja Flanel Premium" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Kategori *</label>
+                        <select id="newCategory" required class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                            <option value="pria">Pria</option>
+                            <option value="wanita">Wanita</option>
+                            <option value="dewasa">Dewasa (Unisex)</option>
+                            <option value="anak">Anak-Anak</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Merek / Brand *</label>
+                        <input type="text" id="newBrand" required placeholder="Contoh: Luthfi Apparel" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Harga Normal (Rp) *</label>
+                        <input type="number" id="newPrice" required placeholder="150000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Harga Diskon Promo (Opsional)</label>
+                        <input type="number" id="newPromoPrice" placeholder="120000" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Jumlah Stok *</label>
+                        <input type="number" id="newStock" required min="1" placeholder="25" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">Pilihan Ukuran (Pisahkan dengan Koma)</label>
+                        <input type="text" id="newSizes" placeholder="S, M, L, XL, XXL" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Spesifikasi & Bahan *</label>
+                    <textarea id="newSpecs" rows="2" required placeholder="Contoh: Katun Combed 30s, Menyerap Keringat, Jahitan Rapi..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">URL Gambar Produk (Gunakan SVG/Placeholder jika kosong)</label>
+                    <input type="text" id="newImg" placeholder="https://images.unsplash.com/photo-..." class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none">
+                </div>
+
+                <div class="flex items-center space-x-2 bg-amber-50 p-3 rounded-xl border border-amber-200">
+                    <input type="checkbox" id="isPromo" class="w-4 h-4 text-amber-600 rounded">
+                    <label for="isPromo" class="font-bold text-amber-900">Tampilkan di Etalase Promo Paling Atas</label>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex justify-end gap-3">
+                    <button type="button" onclick="toggleModal('adminModal', false)" class="px-4 py-2 bg-slate-200 text-slate-700 rounded-xl font-bold hover:bg-slate-300">Batal</button>
+                    <button type="submit" class="px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold shadow-md">Simpan Produk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center space-x-3 transform translate-y-24 opacity-0 transition-all duration-300 z-50">
+        <i id="toastIcon" class="fas fa-check-circle text-emerald-400 text-lg"></i>
+        <span id="toastMessage" class="text-xs font-medium">Notifikasi berhasil!</span>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Set dynamic current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Initial Sample Products Dataset
+        let products = [
+            {
+                id: 1,
+                title: "Kaos Oversize Barber Special Edition",
+                category: "pria",
+                price: 135000,
+                promoPrice: 99000,
+                brand: "Luthfi Barber Signature",
+                sizes: ["M", "L", "XL", "XXL"],
+                specs: "Cotton Combed 24s Premium, Sablon Plastisol HD, Adem & Nyaman",
+                stock: 18,
+                isPromo: true,
+                image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 2,
+                title: "Gamis Modern Elegant Soft Silk",
+                category: "wanita",
+                price: 245000,
+                promoPrice: 189000,
+                brand: "Luthfi Hijab Style",
+                sizes: ["S", "M", "L", "XL"],
+                specs: "Bahan Soft Silk Premium, Busui Friendly, Motif Flowy Anggun",
+                stock: 12,
+                isPromo: true,
+                image: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 3,
+                title: "Setelan Baju Anak Superhero Casual",
+                category: "anak",
+                price: 85000,
+                promoPrice: 65000,
+                brand: "Luthfi Kids Wear",
+                sizes: ["S", "M", "L"],
+                specs: "Bahan Katun Soft 100%, Anti Alergi, Warna Cerah Tahan Lama",
+                stock: 25,
+                isPromo: true,
+                image: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 4,
+                title: "Jaket Denim Vintage Unisex",
+                category: "dewasa",
+                price: 280000,
+                promoPrice: 0,
+                brand: "Luthfi Denim Co.",
+                sizes: ["M", "L", "XL"],
+                specs: "Bahan Heavy Denim 14oz, Kancing Metal Rustproof, Washing Distressed",
+                stock: 8,
+                isPromo: false,
+                image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 5,
+                title: "Kemeja Casual Polos Slim Fit",
+                category: "pria",
+                price: 160000,
+                promoPrice: 0,
+                brand: "Luthfi Man Formal",
+                sizes: ["S", "M", "L", "XL"],
+                specs: "Bahan Poplin Cotton, Jahitan Rapi Presisi, Sangat Nyaman Dipakai Work/Casual",
+                stock: 15,
+                isPromo: false,
+                image: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
+            },
+            {
+                id: 6,
+                title: "Blouse Casual Rayon Premium",
+                category: "wanita",
+                price: 125000,
+                promoPrice: 0,
+                brand: "Luthfi Woman Wear",
+                sizes: ["M", "L", "XL"],
+                specs: "Bahan Rayon Super Adem, Jatuh Cantik, Model Trendy Korean Style",
+                stock: 20,
+                isPromo: false,
+                image: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?auto=format&fit=crop&w=600&q=80"
+            }
+        ];
+
+        let selectedProductForOrder = null;
+        let currentCategory = 'semua';
+
+        // Helper: Format Rupiah
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        // Render Promo Grid Section (Etalase Paling Depan Atas)
+        function renderPromoProducts() {
+            const promoContainer = document.getElementById('promoGrid');
+            const promoItems = products.filter(p => p.isPromo);
+
+            if (promoItems.length === 0) {
+                promoContainer.innerHTML = `<div class="col-span-full text-center py-6 text-amber-200">Belum ada promo aktif saat ini.</div>`;
+                return;
+            }
+
+            promoContainer.innerHTML = promoItems.map(p => {
+                const finalPrice = p.promoPrice > 0 ? p.promoPrice : p.price;
+                return `
+                    <div class="bg-white rounded-2xl p-4 text-slate-800 shadow-lg flex flex-col justify-between group hover:scale-[1.02] transition-transform duration-300">
+                        <div>
+                            <div class="relative overflow-hidden rounded-xl h-48 mb-3">
+                                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Luthfi+Barber'">
+                                <span class="absolute top-2 left-2 bg-red-600 text-white font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+                                    <i class="fas fa-bolt mr-1"></i> Promo Spesial
+                                </span>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold text-amber-600 tracking-wider">${p.category} &bull; ${p.brand}</span>
+                            <h3 class="font-bold text-sm text-slate-900 mt-1 line-clamp-1">${p.title}</h3>
+                            <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">${p.specs}</p>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                ${p.promoPrice > 0 ? `<span class="text-[10px] text-slate-400 line-through block">${formatRupiah(p.price)}</span>` : ''}
+                                <span class="text-base font-black text-amber-600">${formatRupiah(finalPrice)}</span>
+                            </div>
+                            <button onclick="openOrderModal(${p.id})" class="bg-slate-900 hover:bg-amber-600 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Order / Beli
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Render Catalog Grid Section
+        function renderCatalogProducts() {
+            const gridContainer = document.getElementById('productGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase();
+
+            let filtered = products.filter(p => {
+                const matchCat = currentCategory === 'semua' || p.category.toLowerCase() === currentCategory.toLowerCase();
+                const matchSearch = p.title.toLowerCase().includes(searchVal) || p.brand.toLowerCase().includes(searchVal) || p.specs.toLowerCase().includes(searchVal);
+                return matchCat && matchSearch;
+            });
+
+            document.getElementById('productCount').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                gridContainer.innerHTML = `
+                    <div class="col-span-full bg-white p-10 rounded-2xl text-center border border-slate-200">
+                        <i class="fas fa-box-open text-4xl text-slate-300 mb-3"></i>
+                        <p class="text-sm font-semibold text-slate-600">Produk tidak ditemukan!</p>
+                        <p class="text-xs text-slate-400 mt-1">Coba gunakan kata kunci lain atau pilih filter kategori berbeda.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            gridContainer.innerHTML = filtered.map(p => {
+                const finalPrice = p.promoPrice > 0 ? p.promoPrice : p.price;
+                return `
+                    <div class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+                        <div>
+                            <!-- Image Container -->
+                            <div class="relative overflow-hidden rounded-xl h-44 mb-3 bg-slate-100">
+                                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onerror="this.src='https://placehold.co/600x400/1e293b/ffffff?text=Luthfi+Apparel'">
+                                ${p.isPromo ? `<span class="absolute top-2 left-2 bg-amber-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Promo</span>` : ''}
+                                <span class="absolute bottom-2 right-2 bg-slate-900/80 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded-md font-medium">Stok: ${p.stock}</span>
+                            </div>
+
+                            <!-- Category & Brand -->
+                            <div class="flex items-center justify-between text-[10px] font-bold uppercase text-slate-400 mb-1">
+                                <span>${p.category}</span>
+                                <span class="text-amber-600">${p.brand}</span>
+                            </div>
+
+                            <!-- Product Title -->
+                            <h3 class="font-bold text-sm text-slate-900 group-hover:text-amber-600 transition line-clamp-1">${p.title}</h3>
+
+                            <!-- Specifications -->
+                            <div class="mt-2 text-[11px] text-slate-500 bg-slate-50 p-2.5 rounded-xl border border-slate-100 space-y-1">
+                                <div><strong class="text-slate-700">Ukuran:</strong> ${p.sizes.join(', ')}</div>
+                                <div class="line-clamp-2"><strong class="text-slate-700">Spesifikasi:</strong> ${p.specs}</div>
+                            </div>
+                        </div>
+
+                        <!-- Price & Action -->
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div>
+                                ${p.promoPrice > 0 ? `<span class="text-[10px] text-slate-400 line-through block">${formatRupiah(p.price)}</span>` : ''}
+                                <span class="text-base font-extrabold text-slate-900">${formatRupiah(finalPrice)}</span>
+                            </div>
+                            <button onclick="openOrderModal(${p.id})" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 shadow-sm">
+                                <i class="fas fa-cart-plus"></i> Beli
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter Category Trigger
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.remove('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+                    btn.classList.add('bg-amber-600', 'text-white');
+                } else {
+                    btn.classList.remove('bg-amber-600', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-600', 'hover:bg-slate-100');
+                }
+            });
+            renderCatalogProducts();
+        }
+
+        // Handle Search Input
+        function handleSearch() {
+            renderCatalogProducts();
+        }
+
+        // Open Order Modal
+        function openOrderModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            selectedProductForOrder = product;
+
+            // Fill Modal Data
+            document.getElementById('modalProductName').textContent = product.title;
+            document.getElementById('modalProductBrand').textContent = `Merek: ${product.brand} | Stok: ${product.stock}`;
+            document.getElementById('modalProductImg').src = product.image;
+            
+            const badge = document.getElementById('modalProductBadge');
+            if(product.isPromo) {
+                badge.classList.remove('hidden');
+            } else {
+                badge.classList.add('hidden');
+            }
+
+            const finalPrice = product.promoPrice > 0 ? product.promoPrice : product.price;
+            document.getElementById('modalProductPrice').textContent = formatRupiah(finalPrice);
+
+            // Populate Sizes Select Option
+            const sizeSelect = document.getElementById('custSize');
+            sizeSelect.innerHTML = product.sizes.map(s => `<option value="${s}">Ukuran ${s}</option>`).join('');
+
+            // Reset Form Values
+            document.getElementById('custQty').value = 1;
+            updateModalTotal();
+
+            // Toggle Modal
+            toggleModal('orderModal', true);
+        }
+
+        // Update Total Price in Order Modal
+        document.getElementById('custQty').addEventListener('input', updateModalTotal);
+
+        function updateModalTotal() {
+            if (!selectedProductForOrder) return;
+            const qty = parseInt(document.getElementById('custQty').value) || 1;
+            const finalPrice = selectedProductForOrder.promoPrice > 0 ? selectedProductForOrder.promoPrice : selectedProductForOrder.price;
+            document.getElementById('modalTotalPrice').textContent = formatRupiah(finalPrice * qty);
+        }
+
+        // Submit Order Form -> Redirect to WhatsApp
+        function submitOrder(e) {
+            e.preventDefault();
+            if (!selectedProductForOrder) return;
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const size = document.getElementById('custSize').value;
+            const qty = document.getElementById('custQty').value;
+            const payment = document.getElementById('custPayment').value;
+            const address = document.getElementById('custAddress').value.trim();
+
+            const finalPrice = selectedProductForOrder.promoPrice > 0 ? selectedProductForOrder.promoPrice : selectedProductForOrder.price;
+            const totalPriceFormatted = formatRupiah(finalPrice * parseInt(qty));
+
+            // Format WhatsApp Message
+            const waText = 
+`Halo *Luthfi Barbershop & Fashion*, saya mau order pakaian via Web:
+
+📌 *RINCIAN PRODUK:*
+• Nama Pakaian: ${selectedProductForOrder.title}
+• Merek: ${selectedProductForOrder.brand}
+• Ukuran: ${size}
+• Jumlah: ${qty} Pcs
+• Total Harga: ${totalPriceFormatted}
+
+👤 *DATA PEMBELI:*
+• Nama: ${name}
+• No. HP/WA: ${phone}
+• Metode Pembayaran: *${payment}*
+• Alamat Pengiriman: ${address}
+
+Mohon diproses orderannya ya, terima kasih!`;
+
+            const encodedMsg = encodeURIComponent(waText);
+            const waUrl = `https://wa.me/62895379546363?text=${encodedMsg}`;
+
+            // Open WhatsApp Link
+            window.open(waUrl, '_blank');
+
+            // Close Modal & Show Toast Notification
+            toggleModal('orderModal', false);
+            showToast('Order berhasil dibuat! Membuka WhatsApp...');
+        }
+
+        // Add New Stock Product Form (Admin Action)
+        function addNewProduct(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('newTitle').value.trim();
+            const category = document.getElementById('newCategory').value;
+            const brand = document.getElementById('newBrand').value.trim();
+            const price = parseFloat(document.getElementById('newPrice').value);
+            const promoPrice = parseFloat(document.getElementById('newPromoPrice').value) || 0;
+            const stock = parseInt(document.getElementById('newStock').value);
+            const sizesInput = document.getElementById('newSizes').value;
+            const specs = document.getElementById('newSpecs').value.trim();
+            let img = document.getElementById('newImg').value.trim();
+            const isPromo = document.getElementById('isPromo').checked;
+
+            const sizesArr = sizesInput ? sizesInput.split(',').map(s => s.trim()) : ["All Size"];
+            if (!img) {
+                img = "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=600&q=80";
+            }
+
+            const newProd = {
+                id: Date.now(),
+                title: title,
+                category: category,
+                price: price,
+                promoPrice: promoPrice,
+                brand: brand,
+                sizes: sizesArr,
+                specs: specs,
+                stock: stock,
+                isPromo: isPromo,
+                image: img
+            };
+
+            // Prepend new product to top of dataset
+            products.unshift(newProd);
+
+            // Re-render UI
+            renderPromoProducts();
+            renderCatalogProducts();
+
+            // Reset Form & Close Modal
+            document.getElementById('addStockForm').reset();
+            toggleModal('adminModal', false);
+
+            showToast('Stok produk baru berhasil ditambahkan!');
+        }
+
+        // Helper: Generic Modal Toggle
+        function toggleModal(modalId, show) {
+            const modal = document.getElementById(modalId);
+            if (show) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // Helper: Toast Alert
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        // Initialize App on Load
+        window.onload = function() {
+            renderPromoProducts();
+            renderCatalogProducts();
+        };
+    </script>
+</body>
+  </html>
